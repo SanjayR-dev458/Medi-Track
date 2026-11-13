@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - MediTrack</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Reuses the same auth-card/auth-page styling as the registration page -->
+  <link rel="stylesheet" href="register.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">
+        <span class="brand-icon">💊</span>
+        <h1>MediTrack</h1>
+      </div>
+    </a>
+  </nav>
+
+  <!-- ===================== SIGN-IN FORM ===================== -->
+  <main class="auth-page">
+    <div class="auth-card">
+      <h2>Welcome back</h2>
+      <p class="auth-subtext">Sign in with your Employee ID or Email to continue.</p>
+
+      <form id="signinForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="loginIdentifier">Employee ID or Email</label>
+            <input type="text" id="loginIdentifier" placeholder="e.g. EMP1024 or priya@hospital.com" required />
+            <span class="error-msg" id="errLoginIdentifier"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password" required />
+            <span class="error-msg" id="errLoginPassword"></span>
+          </div>
+
+        </div>
+
+        <span class="error-msg" id="errLoginGeneral"></span>
+
+        <button type="submit">Sign In</button>
+      </form>
+
+      <p class="auth-switch">
+        Don't have an account? <a href="register.html">Register here</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="signin.js"></script>
+</body>
+</html>

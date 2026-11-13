@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - MediTrack</title>
+  <!-- Link to our external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Font for a clean pharmacy-dashboard look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== HEADER / TOP BAR ===================== -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">💊</span>
+      <h1>MediTrack</h1>
+    </div>
+    <p class="tagline">Medicine Expiry Date Reminder System</p>
+
+    <!-- Logged-in user's avatar + name + logout button (filled in by auth.js) -->
+    <div id="userBadge" class="user-badge-container"></div>
+
+    <!-- Theme toggle button: switches the whole page between light/dark -->
+    <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle light/dark theme">
+      🌙
+    </button>
+  </header>
+
+  <!-- ===================== MAIN LAYOUT ===================== -->
+  <main class="container">
+
+    <!-- ---------- DASHBOARD STAT CARDS ---------- -->
+    <section class="dashboard" id="dashboard">
+      <div class="stat-card total">
+        <h3>Total Medicines</h3>
+        <p id="statTotal">0</p>
+      </div>
+      <div class="stat-card safe">
+        <h3>Not Expiring Soon</h3>
+        <p id="statSafe">0</p>
+      </div>
+      <div class="stat-card warning">
+        <h3>Expiring Soon</h3>
+        <p id="statWarning">0</p>
+      </div>
+      <div class="stat-card danger">
+        <h3>Expired</h3>
+        <p id="statExpired">0</p>
+      </div>
+    </section>
+
+    <!-- ---------- ADD MEDICINE FORM ---------- -->
+    <section class="form-section">
+      <h2>Add New Medicine</h2>
+      <form id="medicineForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="medName">Medicine Name</label>
+            <input type="text" id="medName" placeholder="e.g. Paracetamol" required />
+            <span class="error-msg" id="errName"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="medCategory">Category</label>
+            <select id="medCategory" required>
+              <option value="">-- Select Category --</option>
+              <option value="Tablet">Tablet</option>
+              <option value="Syrup">Syrup</option>
+              <option value="Injection">Injection</option>
+              <option value="Ointment">Ointment</option>
+              <option value="Drops">Drops</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg" id="errCategory"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="medQuantity">Quantity</label>
+            <input type="number" id="medQuantity" placeholder="e.g. 10" min="1" required />
+            <span class="error-msg" id="errQuantity"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="medExpiry">Expiry Date</label>
+            <input type="date" id="medExpiry" required />
+            <span class="error-msg" id="errExpiry"></span>
+          </div>
+
+        </div>
+
+        <button type="submit" id="submitBtn">+ Add Medicine</button>
+      </form>
+    </section>
+
+    <!-- ---------- SEARCH / FILTER / SORT TOOLBAR ---------- -->
+    <section class="toolbar">
+      <input type="text" id="searchInput" placeholder="🔍 Search by medicine name..." />
+
+      <select id="filterStatus">
+        <option value="all">All Status</option>
+        <option value="safe">Not Expiring Soon</option>
+        <option value="warning">Expiring Soon</option>
+        <option value="expired">Expired</option>
+      </select>
+
+      <select id="sortOrder">
+        <option value="none">Sort by Expiry</option>
+        <option value="asc">Expiry: Soonest First</option>
+        <option value="desc">Expiry: Latest First</option>
+      </select>
+    </section>
+
+    <!-- ---------- MEDICINE TABLE ---------- -->
+    <section class="table-section">
+      <table id="medicineTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Expiry Date</th>
+            <th>Days Left</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="medicineTableBody">
+          <!-- Rows are inserted here dynamically by JavaScript -->
+        </tbody>
+      </table>
+      <p id="emptyMsg" class="empty-msg">No medicines added yet.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>MediTrack &mdash; WT Micro-Project &copy; 2026</p>
+  </footer>
+
+  <!-- ===================== CHATBOT WIDGET ===================== -->
+  <!-- Floating round button that opens/closes the chat window -->
+  <button id="chatToggleBtn" class="chat-toggle-btn" title="Chat with MediBot">💬</button>
+
+  <div id="chatWindow" class="chat-window hidden">
+    <div class="chat-header">
+      <span>🤖 MediBot</span>
+      <button id="chatCloseBtn" class="chat-close-btn">&times;</button>
+    </div>
+
+    <div id="chatMessages" class="chat-messages">
+      <!-- Chat bubbles are inserted here by JavaScript -->
+    </div>
+
+    <form id="chatForm" class="chat-form">
+      <input type="text" id="chatInput" placeholder="Ask me something..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <!-- auth.js first (login check + avatar helpers), then our dashboard logic -->
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

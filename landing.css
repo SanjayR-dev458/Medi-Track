@@ -1,0 +1,77 @@
+/* =========================================================================
+   LANDING.CSS - Layout just for the landing page's hero & features.
+   Colors/fonts still come from style.css (loaded first on the page).
+   ========================================================================= */
+
+.hero {
+  text-align: center;
+  padding: 70px 20px 60px;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: #fff;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  font-size: 16px;
+  max-width: 560px;
+  margin: 0 auto 28px;
+  opacity: 0.95;
+}
+
+.btn-hero {
+  background: #fff;
+  color: #0f766e;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.btn-hero:hover { transform: translateY(-2px); }
+
+.features {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+.features h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 32px;
+  color: var(--text-main);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.feature-icon { font-size: 30px; margin-bottom: 10px; }
+
+.feature-card h4 { font-size: 15px; margin-bottom: 6px; color: var(--text-main); }
+
+.feature-card p { font-size: 13px; color: var(--text-muted); }
+
+.landing-footer {
+  text-align: center;
+  padding: 20px;
+  color: #94a3b8;
+  font-size: 13px;
+}

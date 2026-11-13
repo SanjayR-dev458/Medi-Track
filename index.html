@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediTrack - Medicine Expiry Reminder System</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="landing.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar">
+    <div class="brand">
+      <span class="brand-icon">💊</span>
+      <h1>MediTrack</h1>
+    </div>
+    <!-- Two entry points: existing users sign in, new users register -->
+    <div class="nav-auth-links" id="navAuthLinks">
+      <a href="signin.html" id="navSignInLink" class="nav-link nav-link-outline">Sign In</a>
+      <a href="register.html" id="navAuthLink" class="nav-link">Register</a>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO / INTRODUCTION ===================== -->
+  <section class="hero">
+    <h2>Never let a medicine expire unnoticed.</h2>
+    <p>
+      MediTrack helps pharmacies and small clinics track medicine stock and
+      expiry dates in one simple dashboard - add, search, filter and get
+      warned before anything expires.
+    </p>
+    <!-- Hero button: new/returning users start here (Sign In button removed) -->
+    <div class="hero-btn-group">
+      <button id="getStartedBtn" class="btn-hero">Get Started</button>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="features">
+    <h3>What you can do with MediTrack</h3>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">➕</div>
+        <h4>Add, Edit & Delete</h4>
+        <p>Manage your full medicine inventory in a few clicks.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⏳</div>
+        <h4>Expiry Tracking</h4>
+        <p>Instantly see what's Safe, Expiring Soon, or Expired.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h4>Search, Filter & Sort</h4>
+        <p>Find any medicine fast, and sort by expiry date.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h4>Light / Dark Mode</h4>
+        <p>Switch themes with one click - your choice is remembered.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h4>MediBot Assistant</h4>
+        <p>Ask the built-in chatbot how any feature works.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <h4>No Backend Needed</h4>
+        <p>Everything is saved safely in your own browser.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="landing-footer">
+    <p>MediTrack &mdash; WT Micro-Project &copy; 2026</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="landing.js"></script>
+</body>
+</html>

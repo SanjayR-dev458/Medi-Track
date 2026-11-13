@@ -1,0 +1,558 @@
+/* ===================== THEME VARIABLES ===================== */
+/* These "CSS variables" hold our colors. The JS just toggles the
+   data-theme attribute on <html>, and ALL these colors swap instantly -
+   no need to touch every element individually. */
+:root {
+  --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #cbd5e1;
+  --table-head-bg: #f1f5f9;
+  --row-hover: #f8fafc;
+  --input-bg: #ffffff;
+}
+
+/* Dark theme overrides: applied when <html data-theme="dark"> is set */
+html[data-theme="dark"] {
+  --bg-page: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --table-head-bg: #273449;
+  --row-hover: #243049;
+  --input-bg: #1e293b;
+}
+
+/* ===================== RESET & BASE STYLES ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* makes width/height include padding+border */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===================== HEADER ===================== */
+.topbar {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: #fff;
+  padding: 24px 32px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.brand-icon { font-size: 28px; }
+
+.topbar h1 { font-size: 26px; font-weight: 700; }
+
+.tagline { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+
+/* Theme toggle button sits in the top-right corner of the header */
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.theme-toggle-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* ===================== LAYOUT CONTAINER ===================== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* ===================== DASHBOARD STAT CARDS ===================== */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border-top: 4px solid #cbd5e1;
+  transition: background 0.3s ease;
+}
+
+.stat-card h3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card p {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.stat-card.total { border-top-color: #0ea5e9; }
+.stat-card.total p { color: #0ea5e9; }
+
+.stat-card.safe { border-top-color: #22c55e; }
+.stat-card.safe p { color: #22c55e; }
+
+.stat-card.warning { border-top-color: #f59e0b; }
+.stat-card.warning p { color: #f59e0b; }
+
+.stat-card.danger { border-top-color: #ef4444; }
+.stat-card.danger p { color: #ef4444; }
+
+/* ===================== FORM SECTION ===================== */
+.form-section {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: background 0.3s ease;
+}
+
+.form-section h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #0f766e;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-main);
+  transition: border-color 0.2s, background 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #14b8a6;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 12px;
+  min-height: 16px;
+  margin-top: 4px;
+}
+
+#submitBtn {
+  background: #0f766e;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#submitBtn:hover { background: #115e59; }
+
+/* ===================== TOOLBAR (search/filter/sort) ===================== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.toolbar input,
+.toolbar select {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--input-bg);
+  color: var(--text-main);
+  transition: background 0.3s ease;
+}
+
+#searchInput { flex: 1; min-width: 200px; }
+
+/* ===================== TABLE ===================== */
+.table-section {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  overflow-x: auto;
+  transition: background 0.3s ease;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th {
+  text-align: left;
+  padding: 10px;
+  background: var(--table-head-bg);
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+tbody tr:hover { background: var(--row-hover); }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-block;
+}
+
+.badge.safe { background: #22c55e; }
+.badge.warning { background: #f59e0b; }
+.badge.expired { background: #ef4444; }
+
+.action-btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 6px;
+  color: #fff;
+}
+
+.edit-btn { background: #0ea5e9; }
+.delete-btn { background: #ef4444; }
+
+.empty-msg {
+  text-align: center;
+  color: #94a3b8;
+  padding: 20px;
+  display: none; /* shown via JS only when table is empty */
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+  text-align: center;
+  padding: 16px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px) {
+  .topbar h1 { font-size: 20px; }
+  .stat-card p { font-size: 22px; }
+  table { font-size: 12px; }
+  .chat-window { width: 90vw; right: 5vw; }
+}
+
+/* ===================== CHATBOT WIDGET ===================== */
+
+/* Round floating button, fixed to bottom-right of the screen */
+.chat-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #0f766e;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+.chat-toggle-btn:hover { transform: scale(1.08); }
+
+/* The chat window itself */
+.chat-window {
+  position: fixed;
+  bottom: 92px;
+  right: 24px;
+  width: 320px;
+  max-height: 440px;
+  background: var(--bg-card);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+/* Hidden state - toggled by JS */
+.chat-window.hidden { display: none; }
+
+.chat-header {
+  background: #0f766e;
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.chat-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+}
+
+.chat-bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  max-width: 85%;
+  line-height: 1.4;
+}
+
+.chat-bubble.bot {
+  background: var(--table-head-bg);
+  color: var(--text-main);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.chat-bubble.user {
+  background: #0f766e;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-form {
+  display: flex;
+  border-top: 1px solid var(--border-color);
+}
+
+.chat-form input {
+  flex: 1;
+  border: none;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  background: var(--input-bg);
+  color: var(--text-main);
+  outline: none;
+}
+
+.chat-form button {
+  border: none;
+  background: #0f766e;
+  color: #fff;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-form button:hover { background: #115e59; }
+
+/* =========================================================================
+   NEW: SHARED NAVBAR (used on Landing + Register pages)
+   ========================================================================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--bg-card);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.navbar .brand {
+  justify-content: flex-start;
+  gap: 8px;
+  color: var(--text-main);
+}
+
+.navbar .brand h1 {
+  font-size: 20px;
+  color: #0f766e;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  background: #0f766e;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.nav-link:hover { background: #115e59; }
+
+/* =========================================================================
+   NEW: USER BADGE (avatar + name + logout, top-right of dashboard header)
+   ========================================================================= */
+.user-badge-container {
+  position: absolute;
+  top: 18px;
+  right: 76px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  color: #0f766e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.user-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover { background: rgba(255,255,255,0.3); }
+
+@media (max-width: 700px) {
+  .user-badge-container { right: 64px; }
+  .user-name { display: none; } /* hide name on very small screens, keep avatar */
+}
+
+/* =========================================================================
+   NEW: SIGN IN ENTRY POINTS (landing page nav + hero, and signin.html page)
+   ========================================================================= */
+
+/* Wraps the two navbar links (Sign In + Register) on the landing page */
+.nav-auth-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Outlined variant of .nav-link, used for "Sign In" next to "Register" */
+.nav-link-outline {
+  background: transparent;
+  color: #0f766e;
+  border: 1px solid #0f766e;
+}
+
+.nav-link-outline:hover { background: rgba(15,118,110,0.08); }
+
+/* Groups the two hero buttons (Get Started + Sign In) side by side */
+.hero-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Outlined variant of .btn-hero, used for the hero "Sign In" button */
+.btn-hero-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.btn-hero-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
